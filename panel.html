@@ -1,0 +1,554 @@
+<?php
+
+$host = "localhost"; // veritabanının barındığı sunucu
+$user = "chloe"; // veritabanı kullanıcı adı
+$pass = ""; // veritabanı şifresi
+$db = "Chloe"; // kullanılacak veritabanı
+
+// veritabanına bağlan
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// bağlantı başarısız olduysa hata mesajını göster
+if (!$conn) {
+    die("Veritabanı bağlantısı başarısız oldu: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $musteriAd = $_POST["musteriAd"];
+    $musteriSoyad = $_POST["musteriSoyad"];
+    $musteriAdres = $_POST["musteriAdres"];
+    $musteriCep = $_POST["musteriCep"];
+    $musteriMail = $_POST["musteriMail"];
+    $musteriTC = $_POST["musteriTC"];
+    $musteriSifre = $_POST["musteriSifre"];
+
+    // SQL sorgusu oluşturma
+    $sql = "INSERT INTO Musteri (musteriAd, musteriSoyad, musteriAdres, musteriCep, musteriMail, musteriTC, musteriSifre) VALUES ('$musteriAd', '$musteriSoyad', '$musteriAdres', '$musteriCep', '$musteriMail', '$musteriTC', '$musteriSifre')";
+
+    if ($conn->query($sql)) {
+        echo "kayit oldu";
+    } else {
+        echo "hata";
+    }
+
+    $conn->close();
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" 
+    content="width=device-width,
+    initial-scale=1.0">
+    <title>Chloe</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body{
+        background-color: lightgrey;
+      }
+    </style>
+
+</head>
+
+<body>
+         <b>
+            <marquee  direction="dowm"></marquee>
+
+        </marquee>
+         </b>
+
+    
+    <header class ="header">
+
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+        <a href= "#" class="logo">
+            <img src="image/logo.jpeg"  width="200" height="50000" alt="logo" />
+        </a>
+  
+        <nav class="navbar">
+            
+                <a href="#anasayfa" class="aciton">Anasayfa</a>
+                <a href="#urunler">Ürünler</a>
+                <a href="#iletisim">İletişim</a>
+                <a href="#blogs">Blogs</a>
+         </nav>
+
+    <div class="icons">
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart"></a>
+      <a href="girisyap.php" class="fas fa-user"></a>
+    </div>
+    </header>
+    
+    <!-- Home Start-->
+     <section class="home" id="anasayfa">
+      <div class="content">
+      <img src="image/newkapak.jpg" height="1100px" width="1450px" />
+      <div class="img-text"> <font size="6"><center>300 TL ve ÜZERİ ALIŞVERİŞLERDE KARGO ÜCRETSİZ </center></font></div>
+    </div>
+      <a href="#urunler" class="btn" >Daha Fazla Keşfet → </a>
+    </div>
+     </section>
+     <!--Home End-->
+
+
+     <!--Blogs Start-->
+<section class="Blog" id="blogs">
+  <h1 class="heading"><span> Haftanın </span>Trendi</h1>
+
+  <div class="row">
+      <div class="trend-container">
+          <img src="image/Trend.jpg" />
+      </div>
+      <div class="content">
+          <div class="description">
+              <h3> Denim Çanta</h3>
+              <p>Denim kumaş kaba ve pamuklu bir kumaş türüdür.Denim kumaşın</p>
+              <p>üretiminde pamuk ipliği kullanılır.Sentetik iplik kullanılmadığı</p>
+              <p>için denim kumaş oldukça sağlıklı bir kumaş cinsidir.Dayanıklılığı</p>
+              <p>ve geç kirlenmesi ,az hatta hiç kırışmaması gibi özellikleri nedeni</p>
+              <p>ile bu senenin trend çanta kumaşlarında kullanılmaktadır.</p>
+              <p>Kendi tasarımımız olan parlak taşlı denim çanta modelimiz de</p>
+              <p>Rokalı tutma saplı fermuar kapamalıdır.</p>
+              <p>Çanta yükseklik(13cm) x uzunluk(23cm) x genişlik(9cm) olarak tasarlanmıştır.</p>              
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+
+  <h1 class="heading"><span> ChloeXu </span></h1>
+  <div class="row">
+    <div class="column">
+      <div class="container">
+        <img src="image/chloex1.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="text">@vidanaaaa</div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container">
+        <img src="image/chloex2.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="text">@gu1vogue</div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container">
+        <img src="image/chloex3.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="text">@katiesfitz</div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container">
+        <img src="image/chloex4.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="text">@o_r_y_l_l_e</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+     <!--Blogs End -->
+
+     <!--İcons Start-->
+     <section class="icon-container">
+      <div class="icon">
+        <img src="image/free-shipping.png" alt="">
+        <div class="info">
+          <h3>Ücretsiz Kargo</h3>
+          <span>300 TL ve üzeri</span>
+        </div>
+      </div>
+      <div class="icon">
+        <img src="image/return-box.png" alt="">
+        <div class="info">
+          <h3>5 Gün İçinde İade</h3>
+          <span></span>
+        </div>
+      </div>
+      <div class="icon">
+        <img src="image/gift-box-with-a-bow.png" alt="">
+        <div class="info">
+          <h3>Hediye Kartı</h3>
+        </div>
+      </div>
+      <div class="icon">
+        <img src="image/credit-card.png" alt="">
+        <div class="info">
+          <h3>Güvenli Ödeme</h3>
+          <span></span>
+        </div>
+      </div>
+    </section>
+    
+    <!--İcons End-->
+
+<!-- Ürünler Start-->
+<section class="products" id="urunler">
+  <h1 class="heading"> Ürünler </h1>
+  <div class="box-container">
+    <div class="product-row">
+      <div class="box">
+        <span class="discount"></span>
+        <div class="image">
+          <img src="image/timsahderisi.webp" alt="Product image" width="300" height="300">
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <form method="POST" action="siparisler.php">
+              <input type="hidden" name="product_id" value="1">
+              <input type="hidden" name="price" value="Canta Fiyat">
+              <input type="hidden" name="description" value="Ürün açıklama">
+              <input type="hidden" name="image" value="cantaResim">
+              <button type="submit" name="submit" class="cart-btn">Sepete Ekle</button>
+            </form>
+          </div>
+        </div>
+        <div class="content">
+          <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+          <h3 class="price">Çanta Fiyat</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/aynalıomuzcanta.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/kalp.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/boncukcanta.webp" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"> </span>
+<div class="image">
+  <img src="image/indir.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/turuncu.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/tuvit.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/kristal.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/capraz.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/zincir.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/hasır.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/pembe.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/deri.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+    <a href="#" class="fas fa-share"></a>
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/pudra.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+
+<div class="box">
+<span class="discount"></span>
+<div class="image">
+  <img src="image/tokadetaylı.jpeg" alt="Product image" width="300" height="300">
+  <div class="icons">
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="cart-btn">Sepete Ekle</a>
+
+
+  </div>
+</div>
+<div class="content">
+  <div class="protect-abaout"> Ürün <span>açıklama</span></div>
+  <h3 class="price">Çanta Fiyat</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Ürünler End-->
+
+    <!--İletişim Start-->
+  <section class="contact" id="iletisim">
+    <h1 class="heading"> <span> İletişim</span> </h1>
+
+    <div class="row">
+
+      <div class="container">
+        <form id="contact" action="" method="">
+    
+            <h2>Bize Ulaşın</h2>
+            <div class="form-control">
+                <input placeholder="Adınız Soyadınız" type="text" required autofocus>
+            </div>
+            <div class="form-control">
+                <input placeholder="E-Posta Adresiniz" type="email" required>
+            </div>
+            <div class="form-control">
+                <input placeholder="Konu" type="text" required>
+            </div>
+            <div class="form-control">
+                <textarea placeholder="Lütfen Şikayet veya Önerinizi Buraya Yazın.." required></textarea>
+            </div>
+            <div class="form-control">
+                <button name="submit" type="submit" id="submit">GÖNDER</button>
+            </div>
+            </form>
+
+  </section>
+
+    <!--İletişin End-->
+    <!--Footer Start-->
+    <section class="footer">
+      <div class="box">
+        <div class="box-container">
+          <div class="links-box">
+            <h3></h3>
+            <a href="#anasayfa" class="aciton">Anasayfa</a>
+            <a href="#urunler">Ürünler</a>
+            <a href="#iletisim">İletişim</a>
+            <a href="#blogs">Blogs</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="box">
+        <div class="box-container">
+          <div class="links-box">
+            <h3></h3>
+            <a href="#">Hesabım</a>
+            <a href="#">Siparişlerim</a>
+            <a href="#">Favorilerim</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="box">
+        <div class="box-container">
+          <div class="links-box">
+            <h3>Neredeyiz?</h3>
+            <a href="#">İstanbul</a>
+            <a href="#">İzmir</a>
+            <a href="#">Ankara</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="box">
+        <div class="box-container">
+          <div class="links-box">
+            <h3>Bize Ulaşın</h3>
+            <a href="#">05356789095</a>
+            <a href="#">chloe@gmail.com</a>
+            <a href="#">Ankara</a>
+            <img src="image/payments.png" alt="">
+          </div>
+        </div>
+      </div>
+    
+      <div class="credit"> created by <span> Saliha Uludoğan</span></div>
+    </section>
+    
+   
+    <!--Footer End-->
+    </body>
+</body>
+</html>

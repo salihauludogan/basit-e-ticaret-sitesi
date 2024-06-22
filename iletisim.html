@@ -1,0 +1,144 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$host = "localhost"; // veritabanının barındığı sunucu
+$user = "chloe"; // veritabanı kullanıcı adı
+$pass = ""; // veritabanı şifresi
+$db = "Chloe"; // kullanılacak veritabanı
+
+// veritabanına bağlan
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// bağlantı başarısız olduysa hata mesajını göster
+if (!$conn) {
+    die("Veritabanı bağlantısı başarısız oldu: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Formdan gelen verileri al
+    $product_id = $_POST["product_id"];
+    $price = $_POST["price"];
+    $name = $_POST["name"];
+    $image = $_POST["image"];
+
+    $price = floatval($price);
+    // INSERT sorgusu oluşturma ve verileri veritabanına ekleme
+    $sql = "INSERT INTO Canta (canta_id, cantaFiyat, cantaAdi,  cantaResim) VALUES ('$product_id', '$price','$name', '$image')";
+
+    header("Location: anasayfa.php");
+   
+    
+    if (mysqli_query($conn, $sql)) {
+        echo "Ürün başarıyla sepete eklendi";
+    } else {
+        echo "Hata: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
+?>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" 
+content="width=device-width,initial-scale=1.0">
+  <title>Chloe</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+background-color: lightgray;}
+* {box-sizing: border-box;}
+   .form-container {
+        margin-top: 20px; /* header ile arasındaki boşluğu ayarlayın */
+        max-width: 500px;
+        margin: auto;
+    }
+
+.input-container {
+  display: -ms-flexbox; 
+  display: flex;
+  width: 100%;
+  height: 50%;
+  margin-bottom: 20px;
+}
+
+.icon {
+  padding: 10px;
+  background: black;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  height: 20px;
+  font-size: 15px;
+}
+
+.input-field:focus {
+  border: 4px solid black;
+}
+
+
+
+.baslik {
+  color:black;
+  text-align: center;
+  font-size: 5rem;
+
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+   <header class ="header">
+
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href= "#" class="logo">
+        <img src="image/logo.jpeg"  width="200" height="50000" alt="logo" />
+    </a>
+
+    <nav class="navbar">
+        
+            <a href="#anasayfa" class="aciton">Anasayfa</a>
+            <a href="#urunler">Ürünler</a>
+            <a href="#iletisim">İletişim</a>
+            <a href="#blogs">Blogs</a>
+     </nav>
+
+<div class="icons">
+  <a href="#" class="fas fa-heart"></a>
+  <a href="#" class="fas fa-shopping-cart"></a>
+  <a href="#" class="fas fa-user"></a>
+</div>
+</header>
+
+  
+</body>
+
+</html>
+
