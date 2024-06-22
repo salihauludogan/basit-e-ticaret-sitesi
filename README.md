@@ -1,1 +1,1 @@
-sitede üürn fotoğrafları değiştirilebileceğinden yüklenmemiştir.
+sitede ürün fotoğrafları değiştirilebileceğinden yüklenmemiştir.
